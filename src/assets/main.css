@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body {
+  background-color: #f8fafc;
+}
+.btn {
+  border-radius: 4px;
+  font-size: 13px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border: none;
+  letter-spacing: .02rem;
+  -webkit-box-shadow: 0 4px 8px 0 rgb(0 0 0 / 33%);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 33%);
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.shadow {
+  box-shadow: 0 .2rem .7rem rgba(0,0,0,.15)!important;
+}
+
+.ml-auto,
+.mx-auto {
+    margin-left: auto !important;
+}
+
+
+.mt-8 {
+  margin: 8rem 0 2em 0!important;
+  padding: .5em 1.25rem;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+  
+
+@media screen and (max-width: 769px) {
+    .todo-list {
+        width: 100%;
+        padding: 0;
+    }
+    
+}
+
+.active {
+  border: 1px solid #28a745;
+}
+
+.inactive {
+  border: 1px solid #f43d3d;
+}
+
+ /* .fa-stack-2x {
+  position: absolute;
+    left: -35%;
+    top: -35%;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+} */
+
+ .fa-stack[data-count]:after {
+  position: absolute;
+    right: -8%;
+    top: 72%;
+    content: attr(data-count);
+    font-size: 64%;
+    padding: 6px 6px 7px 6px;
+    border-radius: 25%;
+    line-height: .5;
+    color: white;
+    background: #f43d3d;
+    text-align: center;
+    z-index: 2;
+    min-width: 1em;
+    font-weight: bold;
+}
+
+.alert-bg {
+  background-color: #ff000061;
+}
+
+.alert-body {
+  color: white;
+  padding: .5em;
+}
+
+.login {
+  min-height: 100vh;
+}
+
+.bg-image {
+    background: #28a745;
+  }
+
+.img-welcome {
+  width: auto!important;
+  height: 10%;
+  margin: auto auto;
+}
