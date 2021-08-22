@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+:root {
+  --card-grey: #fdfdfd;
+  --card-green: #6aff6152;
+}
 body {
   background-color: #f8fafc;
+  color: #6b9e77;
 }
 .btn {
   border-radius: 4px;
@@ -29,6 +34,14 @@ body {
   box-shadow: 0 .2rem .7rem rgba(0,0,0,.15)!important;
 }
 
+.card-shadow {
+  box-shadow: 0px 30px 25px -25px rgba(0,0,0,.15)!important;
+}
+.card {
+  border: none;
+}
+
+
 .ml-auto,
 .mx-auto {
     margin-left: auto !important;
@@ -52,21 +65,12 @@ body {
 }
 
 .active {
-  border: 1px solid #28a745;
+  background-color:  #28a745;
 }
 
 .inactive {
-  border: 1px solid #f43d3d;
+  background-color:  grey;
 }
-
- /* .fa-stack-2x {
-  position: absolute;
-    left: -35%;
-    top: -35%;
-    width: 100%;
-    z-index: 1;
-    text-align: center;
-} */
 
  .fa-stack[data-count]:after {
   position: absolute;
@@ -78,7 +82,7 @@ body {
     border-radius: 25%;
     line-height: .5;
     color: white;
-    background: #f43d3d;
+    background: #ec4c4c;
     text-align: center;
     z-index: 2;
     min-width: 1em;
@@ -86,11 +90,10 @@ body {
 }
 
 .alert-bg {
-  background-color: #ff000061;
+  border-right: 10px solid #ec4c4c;
 }
 
 .alert-body {
-  color: white;
   padding: .5em;
 }
 
@@ -106,4 +109,91 @@ body {
   width: auto!important;
   height: 10%;
   margin: auto auto;
+}
+
+.fa-exclamation-circle:before {
+  content: "\f06a";
+    background: linear-gradient(#fff,#fff);
+    /* background-repeat: no-repeat; */
+    background-size: 100%;
+    border-radius: 50%;
+    background-position: center center;
+    position: absolute;
+    right: 2%;
+    top: 1%;
+    color: #ff000085;
+    transition: all .3s ease-in-out;
+}
+
+.device-body p {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.circle-on {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  background: #28a745;
+  border-radius: 50%;
+}
+
+
+.circle-off {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  background: grey;
+  border-radius: 50%;
+}
+
+.comp-img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.device {
+  transition: all .3s ease-in-out;
+}
+.device:hover {
+  transform: translateY(-20px);
+}
+
+
+
+.alert-count {
+  margin-top: -.6em;
+  margin-left: .6em;
+  color: #ec4c4c;
+}
+.device {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	overflow: hidden;
+  height: 250px;
+}
+.device-preview {
+	color: #fff;
+	padding: 30px;
+	max-width: 250px;
+}
+
+.device-info {
+	padding: 30px;
+	position: relative;
+	width: 100%;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgb(255 255 255 / 70%);
+}
+
+.router-link-exact-active {
+  color: #fff!important;
 }

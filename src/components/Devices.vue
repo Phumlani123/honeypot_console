@@ -2,16 +2,26 @@
     <div id="Devices"> 
         <div class="row" >
             {{getDeviceCount()}}
-            <div class="col-md-4 p-1 " v-for="device in devices" :key="device.device_id">
-                <div class="card p-3 h-100" :class="[device.device_live == 'True' ? 'active' : 'inactive']">
-                    <span class="p1 fa-stack fa-1x has-badge">
-                        <i class=" fa fa-circle fa-stack-2x"></i>
-                        <i class=" fa fa-exclamation fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <p>{{device.name}}</p>
-                    <p>{{device.node_id}}</p>
-                    <p>{{device.description}}</p>
-                    <p>{{device.ip_address}}</p>
+            <div class="col-lg-6 p-1 " v-for="device in devices" :key="device.device_id" >
+                
+                <div class="device m-2" >
+                    
+                    <div class="device-preview" :class="[device.device_live == 'True' ? 'active' : 'inactive']">
+                        <h6>Personality: {{device.ippers}}</h6>
+                        <h3>{{device.description}}</h3>
+                    </div>
+                    <div class="device-info">
+                        <i class="fa fa-2x fa-exclamation-circle"></i>
+                        <div v-if="device.device_live == 'True'">
+                            <span class="circle-on"></span><small>  Online </small> 
+                        </div>
+                        <div v-else>
+                            <span class="circle-off"></span> <small>  Offline </small> 
+                        </div>
+                        <h4>Name: {{device.name}}</h4>
+                        <h5>IP:  {{device.ip_address}}</h5>
+                        <button class="btn btn-success float-right" @click="viewDeviceAlerts(device.device_id, device.description)">View all alerts</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -41,6 +51,7 @@
                     console.warn("error", err);
                 });
         },
+        
         methods: {
             getDeviceCount: function() {
                 let liveCount = 0;
@@ -50,6 +61,10 @@
                     }
                 });
                 this.$emit('deviceCount', liveCount)
+            },
+
+            viewDeviceAlerts: function(id, name) {
+                this.$router.push({ path: `/dashboard/view/${id}/${name}`})
             }
             
         }

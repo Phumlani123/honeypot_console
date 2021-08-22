@@ -1,11 +1,13 @@
 <template>
     <div id="Alerts"> 
         <div class="row" >
-            <div class="col-md-4" v-for="(value, name) in groupedAlerts" :key="name">
+            <div class="col-md-4 " v-for="(value, name) in groupedAlerts" :key="name">
+                
                 <span class="p1 fa-stack fa-1x has-badge"
-                      :data-count="value.length">
+                      :data-count="value.length"> 
                     </span>
-                <div class="card p-3 alert-bg">
+                <div class="card p-3 alert-bg shadow">
+                    <small class="alert-count">Critical {{value.length === 1 ? "alert" : "alerts"}}</small>
                     <div class="card-body alert-body">{{ name }} </div>
                     
                 </div>

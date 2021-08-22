@@ -1,16 +1,12 @@
 <template>
-    <div id="RecentAlerts"> 
+    <div id="AlertsByDevice"> 
         <div class="row" >
-            <div class="col-md-4 my-2" v-for="alert in filteredAlerts" :key="alert.alert_id">
-                <!-- <span class="p1 fa-stack fa-1x has-badge"
-                      :data-count="value.length">
-                    </span> -->
+            <div class="col-md-4 my-2 " v-for="alert in filteredAlerts" :key="alert.alert_id">
                 <div class="card p-3 alert-bg h-100 shadow" >
-                    <div class="card-body alert-body">
-                        <p>{{ alert.description }} on {{getDeviceById(alert.node_id).description}}</p>
+                    <div class="card-body alert-body ">
+                        <p>{{ alert.description }} on {{device.name}}</p>
                         <p class="m-1"><small>Ip: {{alert.src_host}}</small></p>
                         <p class="m-1"><small>Time: {{formatDate(alert.created) }}</small></p>
-                        
                     </div>
                     
                 </div>
@@ -21,22 +17,23 @@
  
 <script>
     export default {
-        name: 'RecentAlerts',
+        name: 'AlertsByDevice',
         data() {
             return {
+                device: {},
                 alerts: [],
-                devices: [],
                 filteredAlerts: [],
                 fullPage: true
             }
         },
         created() {
             let loader = this.$loading.show();
+            this.device = this.$route.params;
+            console.log(this.device)
             this.axios
                 .get("https://thinkst-frontend-resources.s3-eu-west-1.amazonaws.com/incidents/data.json")
                 .then(response => {
-                    this.alerts = this.filterDates(response.data.alerts);
-                    this.devices = response.data.device_list;
+                    this.alerts = this.filterAlertByDevice(response.data.alerts);
                     loader.hide()
                 })
                 .catch(err => {
@@ -44,28 +41,26 @@
                     console.warn("error", err);
                 });
         },
+        watch: {
+            '$route.params': 'getData'
+        },
         methods: {
-            filterDates: function(alerts) {
-               let max = alerts.length ? alerts[alerts.length-1].created : "";
-               alerts.filter((item) => {
-                    if(item.created >= (max - 86400)){
+            filterAlertByDevice: function(alerts) {
+                alerts.filter((item) => {
+                    if(item.node_id == this.device.id ){
+                        console.log(item)
                         this.filteredAlerts.push(item);
-                        
                     }
                 });
-            },
-            getDeviceById: function(id) {
-                return this.devices.filter(device => {
-                    if(device.device_id == id){
-                        return device.description;
-                    }
-                })[0];
             },
             formatDate: function(created) {
                 let date = new Date(0);
                 date.setSeconds(created); // specify value for SECONDS here
                 let timeString = date.toISOString().substr(0, 22).replace(/T/g, " at ");
                 return timeString;
+            },
+            getData () {
+                location.reload();
             }
         }
     }

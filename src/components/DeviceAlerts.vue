@@ -5,7 +5,8 @@
                 <span class="p1 fa-stack fa-1x has-badge"
                       :data-count="value.length">
                 </span>
-                <div class="card p-3 alert-bg ">
+                <div class="card p-3 alert-bg shadow">
+                    <small class="alert-count">Critical {{value.length === 1 ? "alert" : "alerts"}}</small>
                     <div class="card-body alert-body">{{getDeviceById(name).description}}  </div>
                 </div>
             </div>
@@ -53,8 +54,7 @@
                     }
                     groups[alert.node_id].push(alert);
                 });
-                this.groupedAlerts = groups;
-                return this.groupedAlerts;
+                return groups;
             }
         }
     }

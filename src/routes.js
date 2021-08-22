@@ -1,13 +1,14 @@
 import Home from './components/Home';
+import RecentAlerts from './components/RecentAlerts';
 import Alerts from './components/Alerts';
 import DeviceAlerts from './components/DeviceAlerts';
 import AttackerAlerts from './components/AttackerAlerts';
-import RecentAlerts from './components/RecentAlerts';
 import Welcome from './components/Welcome';
+import AlertsByDevice from './components/AlertsByDevice';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
     {
@@ -21,8 +22,8 @@ const routes = [
         component: Home,
         children: [
             {
-                path: '',
-                component: Alerts
+                path: '/',
+                component: RecentAlerts
             },
             {
                 path: 'device',
@@ -33,9 +34,13 @@ const routes = [
                 component: AttackerAlerts
             },
             {
-                path: 'recent',
-                component: RecentAlerts
-            }
+                path: 'all',
+                component: Alerts
+            },
+            {
+                path: 'view/:id/:name',
+                component: AlertsByDevice
+            },
         ]
     }
 ];

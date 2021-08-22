@@ -6,14 +6,11 @@
                 <a class="navbar-brand" href="#">
                     <img src="../assets/logo_canary.png" width="autor" height="30" class="d-inline-block align-top" alt="">
                 </a>
-                <!-- <ul class="nav navbar-nav flex-row float-right">
+                <ul class="nav navbar-nav flex-row float-right">
                     <li class="nav-item">
-                        <router-link class="btn btn-info mr-2" to="/login">Sign in</router-link>
+                        <router-link class="btn btn-success mr-2" to="/">logout</router-link>
                     </li>
-                    <li class="nav-item">
-                        <router-link class="btn btn-outline-info" to="/">Sign up</router-link>
-                    </li>
-                </ul> -->
+                </ul>
             </div>
         </nav>
     </div>
