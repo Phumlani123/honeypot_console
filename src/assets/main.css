@@ -234,3 +234,7 @@ body {
   margin-left: .6em;
   color: #ece94c;
 }
+
+.pointer {
+  cursor: pointer;
+}

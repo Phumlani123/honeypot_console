@@ -17,7 +17,6 @@ const routes = [
         component: Welcome
     },
     {
-        name: 'home',
         path: '/dashboard',
         component: Home,
         children: [

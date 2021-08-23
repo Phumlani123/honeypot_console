@@ -1,7 +1,7 @@
 <template>
     <div id="AttackerAlerts"> 
         <div class="row" >
-            <div class="col-md-4" :class="{ 'col-md-12': index === activeItem}" v-for="(value, name, index) in groupedAlerts" :key="name" @click="viewDetail(index)">
+            <div class="col-md-4 pointer" :class="{ 'col-md-12': index === activeItem}" v-for="(value, name, index) in groupedAlerts" :key="name" @click="viewDetail(index)">
                 <span class="p1 fa-stack fa-1x has-badge"
                       :data-count="value.length">
                 </span>

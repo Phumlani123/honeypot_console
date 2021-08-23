@@ -1,12 +1,12 @@
 <template>
     <div id="AlertsByDevice"> 
         <div class="row" >
-            <div class="col-md-4 my-2 " v-for="alert in filteredAlerts" :key="alert.alert_id">
-                <div class="card p-3 alert-bg h-100 shadow" >
+            <div class="col-md-3 col-sm-4 my-2 " v-for="alert in filteredAlerts" :key="alert.alert_id">
+                <div class="card p-1 alert-bg  shadow" >
                     <div class="card-body alert-body ">
-                        <p>{{ alert.description }} on {{device.name}}</p>
-                        <p class="m-1"><small>Ip: {{alert.src_host}}</small></p>
-                        <p class="m-1"><small>Time: {{formatDate(alert.created) }}</small></p>
+                        <p class="m-0"><small>{{ alert.description }} on {{device.name}}</small></p>
+                        <p class="m-0"><small>Ip: {{alert.src_host}}</small></p>
+                        <p class="m-0"><small>Time: {{formatDate(alert.created) }}</small></p>
                     </div>
                     
                 </div>
