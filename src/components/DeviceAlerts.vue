@@ -1,13 +1,22 @@
 <template>
     <div id="DeviceAlerts"> 
         <div class="row" >
-            <div class="col-md-4" v-for="(value, name) in groupedAlerts" :key="name">
+            <div class="col-md-4" :class="{ 'col-md-12': index === activeItem}" v-for="(value, name, index) in groupedAlerts" :key="name" @click="viewDetail(index)">
                 <span class="p1 fa-stack fa-1x has-badge"
                       :data-count="value.length">
                 </span>
                 <div class="card p-3 alert-bg shadow">
                     <small class="alert-count">Critical {{value.length === 1 ? "alert" : "alerts"}}</small>
                     <div class="card-body alert-body">{{getDeviceById(name).description}}  </div>
+                </div>
+                <div class="card d-none card-detail" :class="{'d-block': index === activeItem}">
+                    <div class="row">
+                        <div class="col-md-3 card-body px-4" v-for="val in value" :key="val.alert_id" >
+                            <p >Detected on {{getDeviceById(val.node_id).description}}</p>
+                            <p ><small>Ip: {{val.src_host}}</small></p>
+                            <p ><small>Time: {{formatDate(val.created) }}</small></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -21,7 +30,8 @@
             return {
                 devices: [],
                 groupedAlerts: {},
-                fullPage: true
+                fullPage: true,
+                activeItem: true
             }
         },
         created() {
@@ -55,6 +65,22 @@
                     groups[alert.node_id].push(alert);
                 });
                 return groups;
+            },
+            formatDate: function(created) {
+                let date = new Date(0);
+                date.setSeconds(created); // specify value for SECONDS here
+                // Stack overflow solution to convert to readable date
+                let timeString = date.toISOString().substr(0, 22).replace(/T/g, " at ");
+                return timeString;
+            },
+            viewDetail: function(i) {
+                // Toggle active item 
+                if (!this.activeItem) {
+                   this.activeItem = i
+                } else {
+                    this.activeItem = false;
+                }
+        
             }
         }
     }

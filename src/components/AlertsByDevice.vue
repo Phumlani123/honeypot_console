@@ -29,7 +29,6 @@
         created() {
             let loader = this.$loading.show();
             this.device = this.$route.params;
-            console.log(this.device)
             this.axios
                 .get("https://thinkst-frontend-resources.s3-eu-west-1.amazonaws.com/incidents/data.json")
                 .then(response => {
@@ -48,7 +47,6 @@
             filterAlertByDevice: function(alerts) {
                 alerts.filter((item) => {
                     if(item.node_id == this.device.id ){
-                        console.log(item)
                         this.filteredAlerts.push(item);
                     }
                 });

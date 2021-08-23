@@ -11,7 +11,9 @@
                         <h3>{{device.description}}</h3>
                     </div>
                     <div class="device-info">
-                        <i class="fa fa-2x fa-exclamation-circle"></i>
+                        <div class="icon-circle" :class="[device.device_live == 'True' ? 'pulse' : 'd-none']">
+                            <i class="fa  fa-exclamation" ></i>
+                        </div>
                         <div v-if="device.device_live == 'True'">
                             <span class="circle-on"></span><small>  Online </small> 
                         </div>
